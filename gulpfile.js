@@ -10,7 +10,7 @@ var gulp 			= require('gulp'),
 	uglify 			= require('gulp-uglify'),
 	watch 			= require('gulp-watch'),
 	jshint			= require('gulp-jshint'),
-	browserify		= require('browserify'),
+	browserify		= require('gulp-browserify2'),
 	source 			= require('vinyl-source-stream'),
 	pngquant		= require('imagemin-pngquant');
 
@@ -53,7 +53,7 @@ gulp.task('sass',function(){
 		        .pipe(sourcemaps.init())
 		        .pipe(sourcemaps.write())
 		        .pipe(gulp.dest(dest.css))
-		        .pipe(notify("tapos na gago!"));
+		        .pipe(notify("hey you sexy beast!"));
 });
 
 /*---------------------------------------------------*/
@@ -61,13 +61,15 @@ gulp.task('sass',function(){
 /*compile JS*/
 
 gulp.task('js',function(){
-	/*return browserify(source.mainjs)
-	.bundle()
-	.pipe(source('bundle.js'))*/
 	return gulp.src(source.mainjs)
-	.pipe(jshint())
-	.pipe(jshint.reporter('default'))
-	.pipe(plumber())
+	.pipe(browserify({
+		fileName:'bundle.js'
+	}))
+	/*.pipe(jshint())
+	.pipe(jshint.reporter('default'))*/
+	.pipe(plumber({
+		        	errorHandler:onError
+		        }))
 	.pipe(uglify())
 	.pipe(concat('app.min.js'))
 	.pipe(gulp.dest(dest.js));

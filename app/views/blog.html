@@ -1,0 +1,8 @@
+<div class="container">
+	<ul class="list-group">
+		<li class="list-group-item clearfix" ng-repeat="(postIndex, post) in blog" ng-click="showPost(postIndex)">  
+			<div class="post-title"><h3>{{post.title}}</h3></div>
+			<div class="post-time"><p>{{post.time}}</p></div>
+		</li>
+	</ul>
+</div> 

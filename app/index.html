@@ -1,17 +1,16 @@
-<html>
+<html ng-app="myBlog">
 	<head>
+		<meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Don's Blog</title>
 		<link rel="stylesheet" href="css/styles.css">
 	</head>
 	<body>
-		<h1>Don's Blog</h1>
-		<div class="container" ng-controller="homeController">
-			<ul class="list-group">
-				<li>  
-					<p class="post-title"></p>
-					<p class="post-body"></p>
-				</li>
-			</ul>
-		</div> 
+		<main>
+			<h1>Don's Blog</h1>
+			<ng-view></ng-view>
+		</main>
 	</body>
-	<script src="js/main.js"></script>
+	<script src="js/app.min.js"></script>
 </html>
