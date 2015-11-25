@@ -1,4 +1,17 @@
 <div class="container">
-	<h3 class="post-title">{{post.title}}</h3>
-	<p>{{post.body}}</p>
+	<div class="backtoBlog clearfix">
+		<div class="bktblog"><a href="#/blog" class="btn btn-default">Back to blog</a></div>
+		<div class="editBtns">
+			
+		</div>
+	</div>	
+	<div class="post-wrapper" ng-repeat="($index, post) in blog" ng-show='postId.id == $index'>
+		<h3 class="post-title">
+			{{post.title}} 
+			<button class="btn btn-warning" ng-click="editPost(post)" ng-show="logged">Edit</button>
+			<button class="btn btn-danger" ng-click="deletePost(post)" ng-show="logged">Delete</button>
+		</h3>
+		<span class="time">{{post.time}}</span>
+		<p class="post-body">{{post.body}}</p>
+	</div>
 </div>

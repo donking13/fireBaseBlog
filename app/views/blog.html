@@ -1,8 +1,19 @@
 <div class="container">
-	<ul class="list-group">
-		<li class="list-group-item clearfix" ng-repeat="(postIndex, post) in blog" ng-click="showPost(postIndex)">  
-			<div class="post-title"><h3>{{post.title}}</h3></div>
-			<div class="post-time"><p>{{post.time}}</p></div>
+	<div class="addpost-title-wrapper clearfix">
+		<div class="title-wrapper">
+			<h2>Recent Post</h2>
+		</div>
+		<div class="blogbtn-wrapper">
+			<a class="btn btn-success" ng-href="#/addPost" ng-show="logged">add post</a>
+			<button class="btn btn-danger" ng-click="logout()" ng-show="logged">sign out</button>
+		</div>
+	</div>
+	<ul class="list-group blog">
+		<li class="list-group-item clearfix" ng-repeat="(postIndex, post) in blog">
+			<a ng-href="#/blog/{{postIndex}}">  
+				<div class="post-title"><h3>{{post.title}}</h3></div>
+				<div class="post-time"><p>{{post.time}}</p></div>
+			</a>
 		</li>
 	</ul>
 </div> 

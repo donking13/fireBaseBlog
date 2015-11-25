@@ -34,6 +34,10 @@ myBlog.config(['$routeProvider','$locationProvider',function($routeProvider,$loc
 		templateUrl:'views/blog.html',
 		controller:'blogController'
 	})
+	.when('/blog/:id',{
+		templateUrl:'views/post.html',
+		controller:'blogController'
+	})
 	.when('/login',{
 		templateUrl:'views/login.html',
 		controller:'loginController'
@@ -49,6 +53,10 @@ myBlog.config(['$routeProvider','$locationProvider',function($routeProvider,$loc
 				      return Auth.$requireAuth();
 				    }]
 				  }
+	})
+	.when('/addPost/:id',{
+		templateUrl:'views/addPost.html',
+		controller:'addPostController'
 	})
 	.otherwise({
 		redirectTo: '/'
@@ -70,6 +78,6 @@ myBlog.factory('donblogRefArray',['$firebaseArray',function($firebaseArray){
 
 
 //controllers--------------------------------------------------------------------------------
-myBlog.controller('blogController',['$scope','donblogRefArray',blogCtrl]);
-myBlog.controller('addPostController',['$scope','donblogRefArray','$filter',addPostCtrl]);
+myBlog.controller('blogController',['$scope','donblogRefArray','$routeParams','$filter','$location','Auth',blogCtrl]);
+myBlog.controller('addPostController',['$scope','donblogRefArray','$filter','Auth','$location','$routeParams',addPostCtrl]);
 myBlog.controller('loginController',['$scope','Auth','$location',loginCtrl]);

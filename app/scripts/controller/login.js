@@ -16,8 +16,9 @@ var loginCtrl = function($scope,Auth,$location){
 			if(error.code == 'INVALID_USER' || error.code == 'INVALID_PASSWORD'){
 				  	$scope.loginError = 'Your username or password is incorrect';
 				  }
-		});
+		}); 
 	}
+
 	
 }
 

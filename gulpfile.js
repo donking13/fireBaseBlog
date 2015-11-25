@@ -72,7 +72,8 @@ gulp.task('js',function(){
 		        }))
 	.pipe(uglify())
 	.pipe(concat('app.min.js'))
-	.pipe(gulp.dest(dest.js));
+	.pipe(gulp.dest(dest.js))
+	.pipe(notify("hey you sexy beast!"));
 });
 
 /*---------------------------------------------------*/

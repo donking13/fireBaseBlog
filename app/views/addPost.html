@@ -6,10 +6,11 @@
 		</div>
 		<div class="blogbtn-wrapper">
 			<a href="#/blog" class="btn btn-success">Blog</a>
+			<button class="btn btn-danger" ng-click="logout()">sign out</button>
 		</div>
 	</div>
 	
-	<form method="POST" name="blogPostForm" ng-submit="addPost()">
+	<form method="POST" name="blogPostForm">
 		<div class="form-group">
 			<input class="form-control" type="text" name="title" ng-model="title" required>
 		</div>
@@ -18,7 +19,8 @@
 		</div>
 		
 		
-		<button class="btn btn-primary" ng-disabled="blogPostForm.$invalid" ng-click="viewPost = true">Post</button>
+		<button class="btn btn-primary" ng-click="addPost();viewPost = true" ng-disabled="blogPostForm.$invalid" ng-hide="pageId.id">Post</button>
+		<button class="btn btn-primary" ng-click="updatePost();viewPost = true" ng-disabled="blogPostForm.$invalid" ng-show="pageId.id">update</button>
 		<a class="btn btn-success" ng-show="viewPost" href="#/blog">view post</a>
 	</form>
 </div>
